@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Globo</title>
+        <link rel="stylesheet" href="Globo.css">
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>    </head>
+    <body>
+        <div id="app">
+        <header>
+            <img src="https://i.imgur.com/Qx8uR89.png" alt="">
+            <input type="text" id="usuario" placeholder="Ingrese su Usuario" v-model="usuario" @keyup.click="comentar">
+        </header>
+        <div class="grid-item1">
+            <div class="cajita1">
+                <div class="grid-item-img">
+                    <img src="https://imgur.com/99qgQJy.png" aling="right" style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid blue; margin: 0%;">
+                    <div class="cajita12">
+                        <h1>Jane Doe</h1>
+                        <pre>
+                        <b>Email:</b> jane_doe@email.com
+                        <b>Fecha de nacimiento:</b> 01/05/1996
+                        <b>Teléfono:</b> 918-936-9585
+                        <b>Ciudad:</b> Tokyo, Japón
+                        Trabajando en <b>Lawn N</b>
+                        </pre>
+                    </div>
+                <button @click="seguir">{{ textoSeguir }}</button>
+            </div>
+        </div>
+        <div class="grid-item2">
+            <div class="cajita2">
+                <h2>
+                 Sobre mí
+                </h2> 
+                <h5>
+                 ¡Hola a todos! Soy Jane, y actualmente vivo en la vibrante y 
+                 emocionante cuidad de Tokio, Japón. Me encanta capturar la esencia de la 
+                 vida urbana a través de mi lente, explorando el contraste entre la arquitectura 
+                 moderna y las tradiciones centenarias que conviven en esta metrópolis única.
+                 Desde rascacielos deslumbrantes y calles bulliciosas hasta templos serenos y jardines tranquilos, encuentro inspiración en cada rincón de esta increible ciudad.
+                </h5>
+             </div>
+        </div>
+        <div class="cajita3">
+            <p style="color: rgba(0, 0, 0, 0.412);">Publicado hace 1 semana</p>
+            <img src="https://i.imgur.com/bq9db41.jpeg" alt="" style="width: 100%; height: 50%;"><br>
+            <div class="likes">
+                <button @click="sumarLike">{{botonMeGusta}}</button>
+                <p v-if="contador > 0">{{ contador }} Likes</p>
+            </div>
+            <br>
+            <p>Comentarios: </p>
+            <main class="contenedor">
+                <section class="contenedeor-agg-com">
+                    <div class="input-com">
+                        <input type="text" v-model="comentarioNuevo" placeholder="Nuevo Comentario" style="width: 80%;" id="comentarioNuevo">
+                        <div class="btn-agg">
+                            <button @click="comentar">Comentar</button>
+                        </div>
+                    </div>
+                    <br>
+                    <p v-if="errorMensaje" class="error-Mensaje">{{errorMensaje}}</p>
+                    <br>
+                </section>
+            </main>
+            <ul id="comentarios" class="contenedor-2">
+                <li v-for="(comentario, index) in comentarios" :key="index" class="comentario">
+                  <span class="usuario"><strong>{{ comentario.user }}:</strong></span> {{ comentario.text }}
+                  <span class="close" @click="borrarComentarios(index)">Borrar</span>
+                </li>
+              </ul>
+            <div class="contenedor-2">
+                <div class="comentario">
+                    <h5>Juan Perez</h5>
+                    <p>¡Wow, esa foto de Tokio es impresionante!🌆✨</p>
+                </div>
+                <div class="comentario">
+                    <h5>Katheleen J Rennie</h5>
+                    <p>¡Esta foto de Tokio es simplemente espectacular! Me trae tantos recuerdos.</p>
+                </div>
+                <div class="comentario">
+                    <h5>Diana Bell</h5>
+                    <p>¡Espero que algún día pueda ver Tokio en persona!</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer>
+            <p style="font-size: small;">Proyecto Desarrollado por: Dalla Costa Candela, Alvarez Daniela, Ghirardotti Celeste.</p>
+        </footer>
+        </div>
+        <script src="./Globo.js"></script>
+    </body>
+</html>
